@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Class Gift Portal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="{% static 'gift/icons/material-icons.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'gift/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gift/css/login.css' %}">
+    <script src="{% static 'gift/js/jquery.min.js' %}"></script>
+    <script src="{% static 'gift/js/materialize.min.js' %}"></script>
+    <style>
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            min-height: 50vh;
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+
+    });
+    $(document).ready(function () {
+        $('.slider').slider(
+            {
+                'interval': 2500
+            }
+        );
+    });
+
+</script>
+<nav class="navbar  navbar-inverse">
+    <div class="container-fluid">
+        <div class="">
+            <h4 class="left-align valign">Sail Class Gift Portal</h4>
+        </div>
+
+    </div>
+</nav>
+
+<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col s9">
+                <div class="slider">
+                    <ul class="slides">
+
+                        <li>
+                            <img src="{% static 'gift/images/cod.jpg' %}"> <!-- random image -->
+                            <div class="caption right-align">
+                                <h5 class="light grey-text text-lighten-3">"It's always a happy feeling when an entire
+                                    class comes together to donate for some cause " - XYX, ABC Dept. Class Of 2016"
+                                </h5>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="{% static 'gift/images/gift.jpg' %}"> <!-- random image -->
+                            <div class="caption center-align">
+                                {#                                <h3>This is our big Tagline!</h3>#}
+                                <h5 class="light-grey-text text-lighten-6">"I'm glad there's a platform to GIVE BACK to
+                                    my alma mater upon graduation" - ASKN,
+                                    bsb Dept, Class Of 2015"</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s3" style="">
+                <div class="form-group">
+                    <ul>
+                        {% for error in form.non_field_errors %}
+                            <li class="red-text">
+                                <u>{{ error }}</u>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="">
+                                <div class="">
+                                    <span class="red-text">{{ field.errors }}</span>
+                                    <div class="">{{ field.label_tag }}</div>
+                                    <div class="">{{ field }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="">
+                            <button class="btn-large btn-info" type='submit' name='btn_login' style="width: 80%">
+                                Login
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <div class="container text-center ">
+        <span class="blue-text text-darken-2 "><h3>Senior Class Gift</h3></span>
+        <br>
+        <div class="row">
+            <p>Senior Class gift is a popular practice which is present world-over (now gaining popularity among other
+                IITs) which acts as a first step for the soon-to-be-alumni (final year students) in the Student-Alumni
+                connect process.
+                The Class gift will be an imprint/memory left behind by the graduating batch. For example, an art
+                gallery. It would help to inculcate the culture of giving back to the institute (which was not present
+                before).
+
+            </p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container text-center">
+        <span class="blue-text text-darken-2"><h3>Why Contribute</h3></span>
+        <br>
+        <div class="row">
+            <p>Many of us don't realize that mere government fund can never cover all of the IITG’s requirements. To
+                support our innovative student projects, or to expand student life opportunities, philanthropy makes it
+                possible. The portal not only improves transperency in the process but also gives you the freedom to
+                choose your ‘wish’ and how much you want to donate for the same.
+            </p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container text-center">
+        <span class="blue-text text-darken-2"><h3>How to Login?</h3></span>
+        <br>
+        <div class="row">
+            <p>A first-time-user needs to enter his valid webmail ID and a password will be sent to it using which
+                he/she can login into the portal thereafter. Upon logging into the portal, you have flexibility to
+                choose how much you want to donate and can vote for your choice in the listed set of popular choices.
+
+            </p>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container text-center">
+        <span class="blue-text text-darken-2"><h3>How to pay?</h3></span>
+        <br>
+        <div class="row">
+            <p>
+            <ul>
+                <li>
+                    If you choose to ‘Donate Your Caution Money’, your entire caution money will be deducted (i.e INR
+                    4000 for B.Techs and INR 2000 for M.Techs)
+                </li>
+                <li>
+                    If you wish to donate amounts higher than ‘Caution Deposit’, then you will be re-directed to
+                    ‘Institute’s Donation Portal’ where you can donate as much as you wish to donate. In such a case,
+                    you are requested to fill the transaction ID in your profile in the ‘Class Gift Portal’.
+
+                </li>
+                <li>
+                    Although there would be an option to decline both the methods and take back your money, we hope that
+                    our to-be-alumni will surely have their imprint in their alma mater as a well-wisher.
+                </li>
+            </ul>
+            </p>
+        </div>
+
+        <hr>
+    </div>
+    <div class="container text-center">
+        <span class="blue-text text-darken-2"><h3>How to Vote?</h3></span>
+        <br>
+        <div class="row">
+            <p>You will be listed the set of popular choices and you can select one of the choices, vote for the same
+                and pay through one of the payment modes listed above. If your ‘choice’ does not get sufficient
+                contribution from the ‘Class of 2016’, your money belonging to this ‘bucket’ would be added to endowment
+                fund and would be utilized for other purposes.
+            </p>
+        </div>
+        <hr>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+</body>
+</html>

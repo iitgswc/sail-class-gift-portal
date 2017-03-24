@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="">
+    <link href="{% static 'gift/icons/material-icons.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'gift/css/materialize.min.css' %}">
+    <title>Options</title>
+    <script src="{% static 'gift/js/jquery.min.js' %}"></script>
+    <script src="{% static 'gift/js/materialize.min.js' %}"></script>
+</head>
+
+<script>
+    function selectfun(rowid){
+        var id = rowid.replace("row", "");
+        $('#'+id).prop('checked', true);
+    }
+</script>
+<body>
+<header>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12  ">
+                    <div class="nav-wrapper ">
+                        <a class="brand-logo left">Sail Gift Portal</a>
+                        <a href="{% url 'gift:logout' %}" class="right">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class=" col-sm-12">
+        <table class="table bordered highlight responsive-table centered">
+            <form method="post">
+                {% csrf_token %}
+                <thead>
+                <tr>
+                    <th data-field="name">Name</th>
+                    <th data-field="description">Description</th>
+                    <th data-field="price">Price</th>
+                    <th data-field="image">image</th>
+                    <th data-field="select">select</th>
+                </tr>
+                </thead>
+                {% for choice in choices %}
+                    <tr id="row{{ choice.id }}" onclick="selectfun(this.id)">
+                        <td class="col-sm-2">{{ choice.name }}</td>
+                        <td class="col-sm-3">{{ choice.description }}</td>
+                        <td class="col-sm-2">{{ choice.price }}</td>
+                        <td class="col-sm-3">
+                            {% with 'gift/images/choices/'|add:choice.img_path as image_static %}
+                                <img src="{% static image_static %}" height="100" width="150">
+                            {% endwith %}
+                        </td>
+                        <td class="col-sm-2">
+                            <input type="radio" name="choice" id="{{ choice.id }}" value="{{ choice.id }}">
+                            <label for="{{ choice.id }}"></label>
+{#                            {{ choice.id }}#}
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr id="row100" onclick="selectfun(this.id)">
+                    <td class="col-sm-2">{{ endorement_fund.name }}</td>
+                    <td class="col-sm-3">{{ endorement_fund.description }}</td>
+                    <td class="col-sm-2"></td>
+                    <td class="col-sm-2"></td>
+
+                    <td class="col-sm-2">
+                        <input type="radio" name="choice" id="100" value="100" checked>
+                        <label for="100"></label>
+{#                        {{ endorement_fund.id }}#}
+                    </td>
+                </tr>
+        </table>
+        <div class="center">
+            <button class=" btn waves-effect waves-light" type="submit" name="action" value="choice">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+        </form>
+
+
+    </div>
+</main>
+{#<footer class="page-footer">#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col s6">#}
+{#                <h5 class="white-text">Footer Content</h5>#}
+{#            </div>#}
+{#            <div class="col l4 offset-l2 s6">#}
+{#                <h5 class="white-text">Links</h5>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</footer>#}
+
+<style type="text/css">
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+</style>
+
+</body>
+</html>

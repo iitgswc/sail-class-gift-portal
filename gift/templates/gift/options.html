@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="">
+    <title>option</title>
+    <link href="{% static 'gift/icons/material-icons.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'gift/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gift/css/login.css' %}">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12  ">
+                    <div class="nav-wrapper ">
+                        <a class="brand-logo left">Sail Gift Portal</a>
+                        <a href="{% url 'gift:logout' %}" class="right">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="center">
+        <h5> Select any of methods to donate</h5>
+        <div class="divider"></div>
+        <div class="section">
+            <h5>Donate Class Gift</h5>
+            <button onclick="location.href='{% url 'gift:choice' %}'" class="btn waves-effect waves-light" type="submit"
+                    name="action1" value="options">
+                Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <h5>Donate through SAIL portal</h5>
+            <a href="https://auto.iitg.ernet.in/epay/donation/donation.jsp?" target="_blank">
+                <button onclick="location.href='{% url 'gift:donate' %}'" class="btn waves-effect waves-light"
+                        type="submit" name="action" value="options">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </a>
+        </div>
+    </div>
+</main>
+{#<footer class="page-footer">#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col s6">#}
+{#                <h5 class="white-text">Footer Content</h5>#}
+{#            </div>#}
+{#            <div class="col l4 offset-l2 s6">#}
+{#                <h5 class="white-text">Links</h5>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</footer>#}
+
+
+<script src="{% static 'gift/js/jquery.min.js' %}"></script>
+<script src="{% static 'gift/js/materialize.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal(
+            {
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+            });
+        $('#modal1').modal('open');
+    });
+</script>
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Gift your Caution Money</h4>
+        <p>Student donating the caution money as gift will get free hardcopy of yearbook!!</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK,I Got It</a>
+    </div>
+</div>
+</body>
+</html>
